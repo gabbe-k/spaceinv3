@@ -1,8 +1,7 @@
 package spaceinv.model;
 
 
-import spaceinv.event.EventBus;
-import spaceinv.event.ModelEvent;
+import spaceinv.view.SIGUI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +40,9 @@ public class SI {
     private static final Random rand = new Random();
 
     // TODO More references here
-    //private final Gun gun;
+    private final Ground ground = new Ground();
+    private final Gun gun = new Gun(GROUND_HEIGHT);
+    private final OuterSpace outerSpace = new OuterSpace();
 
     private final List<Projectile> shipBombs = new ArrayList<>();
     private Projectile gunProjectile;
@@ -64,8 +65,18 @@ public class SI {
         }*/
 
         /*
-             Movement
+           Movement
          */
+
+        gun.move();
+
+        if (gunProjectile != null) {
+            gunProjectile.move();
+
+            if (outerSpace.isOut(gunProjectile)) {
+                gunProjectile = null;
+            }
+        }
 
         /*
             Ships fire
@@ -92,13 +103,39 @@ public class SI {
     // ---------- Interaction with GUI  -------------------------
 
     public void fireGun() {
-        // TODO
+        if (gunProjectile == null) {
+            gunProjectile = gun.fire();
+        }
+    }
+
+    public void moveGunLeft() {
+        gun.setDx(-GUN_MAX_DX);
+    }
+
+    public void moveGunRight() {
+        gun.setDx(GUN_MAX_DX);
+    }
+
+    public void stopGunLeft() {
+        if (gun.getDx() < 0) {
+            gun.setDx(0);
+        }
+    }
+
+    public void stopGunRight() {
+        if (gun.getDx() > 0) {
+            gun.setDx(0);
+        }
     }
 
     // TODO More methods called by GUI
 
+
     public List<Positionable> getPositionables() {
         List<Positionable> ps = new ArrayList<>();
+        ps.add(gun);
+        ps.add(ground);
+        if (gunProjectile != null) ps.add(gunProjectile);
         return ps;
     }
 

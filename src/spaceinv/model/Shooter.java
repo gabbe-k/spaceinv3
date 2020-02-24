@@ -13,12 +13,9 @@ public class Shooter {
     // at the firing objects "top/bottom-center"
     // Handle the projectile over to the "game loop" to move it.
     public static Projectile fire(Positionable positionable, int dy) {
-        Projectile p = new Projectile(dy);
-        p.setX(positionable.getX() + positionable.getWidth() / 2 - p.getWidth() / 2);
-        p.setY(positionable.getY() - p.getHeight());
+        Projectile p = new Projectile(positionable.getX() + positionable.getWidth() / 2, positionable.getY());
+        p.setDy(dy);
         return p;
     }
 
-    private Shooter() {
-    }
 }

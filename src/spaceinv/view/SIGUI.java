@@ -51,10 +51,10 @@ public class SIGUI extends Application implements EventHandler {
         KeyCode kc = event.getCode();
         switch (kc) {
             case LEFT:
-               // TODO
+               spaceInv.moveGunLeft();
                 break;
             case RIGHT:
-               // TODO
+               spaceInv.moveGunRight();
                 break;
             case SPACE:
                 spaceInv.fireGun();
@@ -70,8 +70,10 @@ public class SIGUI extends Application implements EventHandler {
         KeyCode kc = event.getCode();
         switch (kc) {
             case LEFT:
+                spaceInv.stopGunLeft();
+                break;
             case RIGHT:
-                // TODO
+                spaceInv.stopGunRight();
                 break;
             default: // Nothing
         }
@@ -101,7 +103,6 @@ public class SIGUI extends Application implements EventHandler {
     // ---------- Menu actions ---------------------
 
     private void newGame() {
-
         /* Use later
         List<AbstractSpaceship> ships = new ArrayList<>();
         int nShips = 12 * (SHIP_WIDTH + 10);
@@ -117,6 +118,7 @@ public class SIGUI extends Application implements EventHandler {
         */
 
         // TODO Build model
+        spaceInv = new SI();
 
         // NOTE: Declared at top of class
         //spaceInv  =

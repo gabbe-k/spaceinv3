@@ -8,5 +8,4 @@ public class Bomber {
     // Default value
     public static final int BOMBER_POINTS = 200;
 
-
 }
