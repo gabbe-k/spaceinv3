@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21ddb401-ba73-4ad2-9849-35c0752f903b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/spaceinv/model/Fleet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spaceinv/model/Movable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spaceinv/model/Object.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Ground.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/Ground.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/Gun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/OuterSpace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/OuterSpace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/Projectile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/SI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/SI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Shooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/Shooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/ships/BattleCruiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/ships/BattleCruiser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/ships/Bomber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/ships/Bomber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/ships/Frigate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/ships/Frigate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/view/SIGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/view/SIGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Movable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/Movable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +31,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
@@ -133,11 +120,12 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="242" y="40" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582537711574">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="340" y="59" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582565360932">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="242" y="40" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1582537711574" />
     <state x="1898" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/1600.0.1680.1050/0.150.1600.900@1600.0.1680.1050" timestamp="1580207556788" />
+    <state x="340" y="59" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1600.900/0.0.1920.1080@0.0.1920.1080" timestamp="1582565360932" />
     <state x="598" y="98" width="376" height="622" key="#com.intellij.ide.util.MemberChooser" timestamp="1582554547211">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -152,10 +140,11 @@
     </state>
     <state x="253" y="184" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1582553864222" />
     <state x="1911" y="265" width="526" height="497" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1600.0.1680.1050/0.150.1600.900@1600.0.1680.1050" timestamp="1580206524680" />
-    <state x="2219" y="280" width="612" height="480" key="FileChooserDialogImpl" timestamp="1575896052966">
-      <screen x="1600" y="0" width="1680" height="1050" />
+    <state x="707" y="288" width="612" height="480" key="FileChooserDialogImpl" timestamp="1582565344440">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="2219" y="280" width="612" height="480" key="FileChooserDialogImpl/1600.0.1680.1050/0.150.1600.900@1600.0.1680.1050" timestamp="1575896052966" />
+    <state x="707" y="288" key="FileChooserDialogImpl/1920.0.1600.900/0.0.1920.1080@0.0.1920.1080" timestamp="1582565344440" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1582555518257">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -200,10 +189,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1582555462295" />
-    <state x="1923" y="102" width="1026" height="841" key="SettingsEditor" timestamp="1579515332126">
-      <screen x="1600" y="0" width="1680" height="1050" />
+    <state x="369" y="105" width="1026" height="841" key="SettingsEditor" timestamp="1582565348106">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="1923" y="102" width="1026" height="841" key="SettingsEditor/1600.0.1680.1050/0.150.1600.900@1600.0.1680.1050" timestamp="1579515332126" />
+    <state x="369" y="105" key="SettingsEditor/1920.0.1600.900/0.0.1920.1080@0.0.1920.1080" timestamp="1582565348106" />
     <state x="327" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1582550772541">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -216,10 +206,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1582548834247" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1582553409768">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="486" y="73" width="945" height="1006" key="search.everywhere.popup" timestamp="1582565356223">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1582553409768" />
+    <state x="486" y="73" width="945" height="1006" key="search.everywhere.popup/1920.0.1600.900/0.0.1920.1080@0.0.1920.1080" timestamp="1582565356223" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
