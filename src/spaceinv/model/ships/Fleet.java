@@ -74,8 +74,7 @@ public class Fleet extends Movable {
             }
 
         }
-
-        super.set
+        
 
     }
 

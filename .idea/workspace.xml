@@ -2,36 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21ddb401-ba73-4ad2-9849-35c0752f903b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spaceinv/model/ships/Ship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Fleet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Ground.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Gun.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Object.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/OuterSpace.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Projectile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/SI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/SI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Shootable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Shootable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Shooter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/ships/BattleCruiser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/ships/BattleCruiser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/ships/Bomber.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/ships/Bomber.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/ships/Frigate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/ships/Frigate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/view/Assets.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/view/Assets.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Fleet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/ships/Fleet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Ground.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/object/Ground.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/object/Gun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Movable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/Movable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Object.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/OuterSpace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/object/OuterSpace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/object/Projectile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/SI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/SI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Shootable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/Shootable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Shooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/object/Shooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/ships/BattleCruiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/ships/BattleCruiser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/ships/Bomber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/ships/Bomber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/ships/Frigate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/ships/Frigate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/view/Assets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/view/Assets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/ships/Fleet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/ships/Fleet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
