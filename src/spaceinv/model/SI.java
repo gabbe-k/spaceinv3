@@ -6,6 +6,7 @@ import spaceinv.model.object.Gun;
 import spaceinv.model.object.OuterSpace;
 import spaceinv.model.object.Projectile;
 import spaceinv.model.ships.Fleet;
+import spaceinv.model.ships.Ship;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,9 @@ public class SI {
     public static final int SHIP_HEIGHT = 20;
     public static final int SHIP_MAX_DX = 3;
     public static final int SHIP_MAX_DY = 0;
+    public static final int SHIP_COLS= 5;
+    public static final int SHIP_ROWS = 5;
+    public static final int SHIP_MARGIN = 10;
     public static final int GUN_WIDTH = 20;
     public static final int GUN_HEIGHT = 20;
     public static final double GUN_MAX_DX = 2;
@@ -51,7 +55,7 @@ public class SI {
     private final Ground ground = new Ground();
     private final Gun gun = new Gun(GROUND_HEIGHT);
     private final OuterSpace outerSpace = new OuterSpace();
-    private final Fleet fleet = new Fleet(5, 5, 10);
+    private final Fleet fleet = new Fleet(SHIP_COLS, SHIP_ROWS, SHIP_MARGIN);
     private final List<Projectile> shipBombs = new ArrayList<>();
     private Projectile gunProjectile;
     private int points;
@@ -79,7 +83,6 @@ public class SI {
         gun.move();
         fleet.moveFleet();
 
-
         if (gunProjectile != null) {
             gunProjectile.move();
 
@@ -96,7 +99,10 @@ public class SI {
 
              Collisions
          */
+    }
 
+    private void projHitShip() {
+        List<Ship> shipList = fleet.getShipList();
     }
 
     private boolean shipHitRightLimit() {

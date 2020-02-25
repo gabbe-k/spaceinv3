@@ -7,13 +7,15 @@ import static spaceinv.model.SI.*;
 
 public class Fleet {
 
+    private double shipCol;
     private double minX;
     private double maxX;
-    private double fleetDx = SHIP_MAX_DX;
+    private double fleetDx = 1;
     private List<List<Ship>> shipList = new ArrayList<List<Ship>>();
 
     public Fleet(double shipCol, double shipRow, double margin) {
 
+        this.shipCol = shipCol;
         double x = (GAME_WIDTH-shipCol*(SHIP_WIDTH + margin))/2;
         for (int i = 0; i < shipRow; i++) {
 
@@ -45,20 +47,9 @@ public class Fleet {
     public void moveFleet() {
 
         updateWidth();
-        setFleetDx();
         for (List<Ship> row:shipList) {
             for (Ship s: row) {
                 s.move();
-                s.setDx(fleetDx);
-            }
-        }
-
-    }
-
-    public void setFleetDx() {
-
-        for (List<Ship> row:shipList) {
-            for (Ship s: row) {
                 s.setDx(fleetDx);
             }
         }
