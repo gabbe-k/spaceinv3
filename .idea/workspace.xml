@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21ddb401-ba73-4ad2-9849-35c0752f903b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/ships/Fleet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/ships/Fleet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
