@@ -1,21 +1,19 @@
 package spaceinv.model.ships;
 
-import spaceinv.model.Movable;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static spaceinv.model.SI.*;
 
-public class Fleet extends Movable {
+public class Fleet {
 
-    private double dx = GUN_MAX_DX;
+    private double minX;
+    private double maxX;
+    private double fleetDx = SHIP_MAX_DX;
     private List<List<Ship>> shipList = new ArrayList<List<Ship>>();
     private int rowIndex = 0;
 
     public Fleet(double shipCol, double shipRow, double margin) {
-        super((GAME_WIDTH-shipCol*(SHIP_WIDTH + margin))/2, 10,
-        shipCol*(SHIP_WIDTH + margin) ,shipRow*(SHIP_HEIGHT + margin));
 
         double x = (GAME_WIDTH-shipCol*(SHIP_WIDTH + margin))/2;
         for (int i = 0; i < shipRow; i++) {
@@ -24,9 +22,11 @@ public class Fleet extends Movable {
 
             for (int j = 0; j < shipCol; j++) {
                 Ship s = new Frigate(x + j*(SHIP_WIDTH+margin), 10 + i*(SHIP_HEIGHT+margin));
-                s.setDx(GUN_MAX_DX);
+                s.setDx(fleetDx);
                 row.add(s);
             }
+
+            updateWidth();
 
             shipList.add(row);
         }
@@ -43,12 +43,13 @@ public class Fleet extends Movable {
         return returnList;
     }
 
-    @Override
-    public void move() {
+    public void moveFleet() {
 
+        updateWidth();
         List<Ship> row = shipList.get(rowIndex);
 
         for (Ship s: row) {
+            s.setDx(fleetDx);
             s.move();
         }
 
@@ -74,8 +75,21 @@ public class Fleet extends Movable {
             }
 
         }
-        
 
+        this.minX = minX;
+        this.maxX = maxX;
+
+    }
+
+    public void changeDxIfWallCollision() {
+
+        if ( maxX >= RIGHT_LIMIT) {
+            fleetDx = -2;
+        }
+
+        if ( minX <= LEFT_LIMIT) {
+            fleetDx = 2;
+        }
     }
 
 }

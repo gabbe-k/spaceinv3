@@ -5,10 +5,7 @@ import spaceinv.model.object.Ground;
 import spaceinv.model.object.Gun;
 import spaceinv.model.object.OuterSpace;
 import spaceinv.model.object.Projectile;
-import spaceinv.model.ships.BattleCruiser;
-import spaceinv.model.ships.Bomber;
 import spaceinv.model.ships.Fleet;
-import spaceinv.model.ships.Frigate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +51,7 @@ public class SI {
     private final Ground ground = new Ground();
     private final Gun gun = new Gun(GROUND_HEIGHT);
     private final OuterSpace outerSpace = new OuterSpace();
-    private final Fleet fleet = new Fleet(8, 8, 10);
+    private final Fleet fleet = new Fleet(5, 5, 10);
     private final List<Projectile> shipBombs = new ArrayList<>();
     private Projectile gunProjectile;
     private int points;
@@ -81,7 +78,8 @@ public class SI {
 
 
         gun.move();
-        fleet.move();
+        fleet.moveFleet();
+        fleet.changeDxIfWallCollision();
 
         if (gunProjectile != null) {
             gunProjectile.move();
@@ -95,8 +93,8 @@ public class SI {
             Ships fire
          */
 
-
         /*
+
              Collisions
          */
 
