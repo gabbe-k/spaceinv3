@@ -1,4 +1,6 @@
-package spaceinv.model;
+package spaceinv.model.object;
+
+import spaceinv.model.Movable;
 
 import static spaceinv.model.SI.PROJECTILE_HEIGHT;
 import static spaceinv.model.SI.PROJECTILE_WIDTH;

@@ -1,7 +1,14 @@
 package spaceinv.model;
 
 
-import spaceinv.view.SIGUI;
+import spaceinv.model.object.Ground;
+import spaceinv.model.object.Gun;
+import spaceinv.model.object.OuterSpace;
+import spaceinv.model.object.Projectile;
+import spaceinv.model.ships.BattleCruiser;
+import spaceinv.model.ships.Bomber;
+import spaceinv.model.ships.Fleet;
+import spaceinv.model.ships.Frigate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +39,10 @@ public class SI {
     public static final double PROJECTILE_HEIGHT = 5;
     public static final int GROUND_HEIGHT = 20;
     public static final int OUTER_SPACE_HEIGHT = 10;
+    //i dont know if this is necessary
+    //////////////////////
+    public static final int PROJECTILE_SPEED = 1;
+
 
     public static final long ONE_SEC = 1_000_000_000;
     public static final long HALF_SEC = 500_000_000;
@@ -43,7 +54,7 @@ public class SI {
     private final Ground ground = new Ground();
     private final Gun gun = new Gun(GROUND_HEIGHT);
     private final OuterSpace outerSpace = new OuterSpace();
-
+    private final Fleet fleet = new Fleet(8, 8, 10);
     private final List<Projectile> shipBombs = new ArrayList<>();
     private Projectile gunProjectile;
     private int points;
@@ -68,7 +79,9 @@ public class SI {
            Movement
          */
 
+
         gun.move();
+        fleet.move();
 
         if (gunProjectile != null) {
             gunProjectile.move();
@@ -136,6 +149,7 @@ public class SI {
         ps.add(gun);
         ps.add(ground);
         if (gunProjectile != null) ps.add(gunProjectile);
+        ps.addAll(fleet.getShipList());
         return ps;
     }
 

@@ -4,12 +4,12 @@ import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import spaceinv.model.Gun;
-import spaceinv.model.Projectile;
+import spaceinv.model.object.Gun;
+import spaceinv.model.object.Projectile;
 import spaceinv.model.ships.BattleCruiser;
 import spaceinv.model.ships.Bomber;
 import spaceinv.model.ships.Frigate;
-import spaceinv.model.Ground;
+import spaceinv.model.object.Ground;
 
 import java.util.HashMap;
 import java.util.Map;

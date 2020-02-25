@@ -5,6 +5,8 @@ package spaceinv.model;
     (not principally important more of a hint)
  */
 
+import spaceinv.model.object.Projectile;
+
 public interface Shootable {
     Projectile fire();
 }

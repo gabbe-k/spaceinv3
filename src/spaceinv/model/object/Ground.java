@@ -1,5 +1,7 @@
-package spaceinv.model;
+package spaceinv.model.object;
 
+
+import spaceinv.model.Positionable;
 
 import static spaceinv.model.SI.*;
 
@@ -7,7 +9,7 @@ import static spaceinv.model.SI.*;
     The ground where the Gun lives.
     Used to check if projectiles from ships have hit the ground
  */
-public class Ground implements Positionable  {
+public class Ground implements Positionable {
 
     @Override
     public double getX() {

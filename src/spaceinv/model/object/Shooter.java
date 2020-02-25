@@ -1,4 +1,6 @@
-package spaceinv.model;
+package spaceinv.model.object;
+
+import spaceinv.model.Positionable;
 
 /*
     A utility to shoot projectiles

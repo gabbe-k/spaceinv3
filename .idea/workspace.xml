@@ -2,26 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21ddb401-ba73-4ad2-9849-35c0752f903b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/spaceinv/model/Fleet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spaceinv/model/Movable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/spaceinv/model/Object.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/spaceinv/model/ships/Ship.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Ground.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/Ground.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/Gun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/OuterSpace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/OuterSpace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/Projectile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Fleet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Ground.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Gun.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Object.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/OuterSpace.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Projectile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/SI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/SI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Shootable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Shootable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/Shooter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/ships/BattleCruiser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/ships/BattleCruiser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/ships/Bomber.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/ships/Bomber.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/ships/Frigate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/model/ships/Frigate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/view/Assets.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spaceinv3/spaceinv/view/Assets.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Fleet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/ships/Fleet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Ground.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/object/Ground.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/object/Gun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Movable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/Movable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Object.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/OuterSpace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/object/OuterSpace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/object/Projectile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spaceinv/model/SI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/SI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Shooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/Shooter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Shootable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/Shootable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spaceinv/model/Shooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/object/Shooter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spaceinv/model/ships/BattleCruiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/ships/BattleCruiser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spaceinv/model/ships/Bomber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/ships/Bomber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spaceinv/model/ships/Frigate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/model/ships/Frigate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spaceinv/view/SIGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/view/SIGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spaceinv/view/Assets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spaceinv/view/Assets.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="spaceinv3" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -48,6 +66,11 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="spaceinv.model" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="Applet">
@@ -138,11 +161,15 @@
     </state>
     <state x="242" y="40" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1582537711574" />
     <state x="1898" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/1600.0.1680.1050/0.150.1600.900@1600.0.1680.1050" timestamp="1580207556788" />
-    <state x="598" y="98" width="376" height="622" key="#com.intellij.ide.util.MemberChooser" timestamp="1582554547211">
+    <state x="598" y="98" width="376" height="622" key="#com.intellij.ide.util.MemberChooser" timestamp="1582627800250">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="598" y="98" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1582554547211" />
+    <state x="598" y="98" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1582627800250" />
     <state x="2335" y="228" width="376" height="622" key="#com.intellij.ide.util.MemberChooser/1600.0.1680.1050/0.150.1600.900@1600.0.1680.1050" timestamp="1580206124515" />
+    <state x="479" y="224" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1582622997026">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="479" y="224" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1582622997026" />
     <state x="364" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1582540337094">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -156,32 +183,32 @@
       <screen x="1600" y="0" width="1680" height="1050" />
     </state>
     <state x="2219" y="280" width="612" height="480" key="FileChooserDialogImpl/1600.0.1680.1050/0.150.1600.900@1600.0.1680.1050" timestamp="1575896052966" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1582555518257">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1582626284743">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1200" height="227" key="GridCell.Tab.0.bottom/0.0.1248.1024/0.0.1248.1024@0.0.1248.1024" timestamp="1579513449019" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1582555518257" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1582626284743" />
     <state width="1842" height="288" key="GridCell.Tab.0.bottom/0.0.1888.1080/0.0.1888.1080@0.0.1888.1080" timestamp="1579093384853" />
     <state width="1352" height="262" key="GridCell.Tab.0.bottom/1600.0.1680.1050/0.150.1600.900@1600.0.1680.1050" timestamp="1575896054025" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1582555518257">
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1582626284743">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1200" height="227" key="GridCell.Tab.0.center/0.0.1248.1024/0.0.1248.1024@0.0.1248.1024" timestamp="1579513449019" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1582555518257" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1582626284743" />
     <state width="1842" height="288" key="GridCell.Tab.0.center/0.0.1888.1080/0.0.1888.1080@0.0.1888.1080" timestamp="1579093384852" />
     <state width="1352" height="262" key="GridCell.Tab.0.center/1600.0.1680.1050/0.150.1600.900@1600.0.1680.1050" timestamp="1575896054025" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1582555518256">
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1582626284743">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1200" height="227" key="GridCell.Tab.0.left/0.0.1248.1024/0.0.1248.1024@0.0.1248.1024" timestamp="1579513449019" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1582555518256" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1582626284743" />
     <state width="1842" height="288" key="GridCell.Tab.0.left/0.0.1888.1080/0.0.1888.1080@0.0.1888.1080" timestamp="1579093384852" />
     <state width="1352" height="262" key="GridCell.Tab.0.left/1600.0.1680.1050/0.150.1600.900@1600.0.1680.1050" timestamp="1575896054024" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1582555518257">
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1582626284743">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1200" height="227" key="GridCell.Tab.0.right/0.0.1248.1024/0.0.1248.1024@0.0.1248.1024" timestamp="1579513449019" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1582555518257" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1582626284743" />
     <state width="1842" height="288" key="GridCell.Tab.0.right/0.0.1888.1080/0.0.1888.1080@0.0.1888.1080" timestamp="1579093384852" />
     <state width="1352" height="262" key="GridCell.Tab.0.right/1600.0.1680.1050/0.150.1600.900@1600.0.1680.1050" timestamp="1575896054025" />
     <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1582555462295">
@@ -216,10 +243,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1582548834247" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1582553409768">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1582624383904">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1582553409768" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1582624383904" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

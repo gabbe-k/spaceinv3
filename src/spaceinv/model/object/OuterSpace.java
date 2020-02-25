@@ -1,4 +1,4 @@
-package spaceinv.model;
+package spaceinv.model.object;
 
 import static spaceinv.model.SI.*;
 
