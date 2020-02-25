@@ -11,7 +11,6 @@ public class Fleet {
     private double maxX;
     private double fleetDx = SHIP_MAX_DX;
     private List<List<Ship>> shipList = new ArrayList<List<Ship>>();
-    private int rowIndex = 0;
 
     public Fleet(double shipCol, double shipRow, double margin) {
 
@@ -46,14 +45,23 @@ public class Fleet {
     public void moveFleet() {
 
         updateWidth();
-        List<Ship> row = shipList.get(rowIndex);
-
-        for (Ship s: row) {
-            s.setDx(fleetDx);
-            s.move();
+        setFleetDx();
+        for (List<Ship> row:shipList) {
+            for (Ship s: row) {
+                s.move();
+                s.setDx(fleetDx);
+            }
         }
 
-        rowIndex = (rowIndex + 1) % shipList.size();
+    }
+
+    public void setFleetDx() {
+
+        for (List<Ship> row:shipList) {
+            for (Ship s: row) {
+                s.setDx(fleetDx);
+            }
+        }
 
     }
 

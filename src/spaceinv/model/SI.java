@@ -76,10 +76,9 @@ public class SI {
            Movement
          */
 
-
         gun.move();
         fleet.moveFleet();
-        fleet.changeDxIfWallCollision();
+
 
         if (gunProjectile != null) {
             gunProjectile.move();
@@ -92,7 +91,7 @@ public class SI {
         /*
             Ships fire
          */
-
+        fleet.changeDxIfWallCollision();
         /*
 
              Collisions
