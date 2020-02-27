@@ -38,8 +38,8 @@ public class SI {
     public static final int GUN_WIDTH = 40;
     public static final int GUN_HEIGHT = 40;
     public static final double GUN_MAX_DX = 2;
-    public static final double PROJECTILE_WIDTH = 15;
-    public static final double PROJECTILE_HEIGHT = 15;
+    public static final double PROJECTILE_WIDTH = 30;
+    public static final double PROJECTILE_HEIGHT = 30;
     public static final int PROJECTILE_SPEED = 1;
     public static final int GROUND_HEIGHT = 20;
     public static final int OUTER_SPACE_HEIGHT = 10;
