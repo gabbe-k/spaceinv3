@@ -9,6 +9,6 @@ public class Frigate extends Ship {
     public static final int FRIGATE_POINTS = 300;
 
     public Frigate(double x, double y) {
-        super(x, y);
+        super(x, y, FRIGATE_POINTS);
     }
 }

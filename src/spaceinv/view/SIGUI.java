@@ -16,14 +16,12 @@ import javafx.stage.Stage;
 import spaceinv.event.EventBus;
 import spaceinv.event.EventHandler;
 import spaceinv.event.ModelEvent;
-import spaceinv.model.*;
-import spaceinv.model.ships.BattleCruiser;
-import spaceinv.model.ships.Bomber;
-import spaceinv.model.ships.Frigate;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import spaceinv.model.Positionable;
+import spaceinv.model.SI;
+import spaceinv.model.object.Ground;
+import spaceinv.model.object.Gun;
+import spaceinv.model.object.OuterSpace;
+import spaceinv.model.ships.Fleet;
 
 import static java.lang.System.out;
 import static spaceinv.model.SI.*;
@@ -116,12 +114,12 @@ public class SIGUI extends Application implements EventHandler {
             ships.add(new Bomber(i, 110));
         }
         */
+        Ground g = new Ground();
+        Gun gn = new Gun(GROUND_HEIGHT);
+        OuterSpace o = new OuterSpace();
+        Fleet f = new Fleet(SHIP_COLS, SHIP_ROWS, SHIP_MARGIN);
 
-        // TODO Build model
-        spaceInv = new SI();
-
-        // NOTE: Declared at top of class
-        //spaceInv  =
+        spaceInv = new SI(g, gn, o ,f);
 
         renderBackground();
         timer.start();
@@ -161,13 +159,12 @@ public class SIGUI extends Application implements EventHandler {
                 // TODO Optional
                 break;
             case BOMB_HIT_GROUND:
-                // TODO Optional
-                break;
             case BOMB_HIT_GUN:
                 p = (Positionable) evt.data;
                 new Explosion(p.getX(), p.getY(), fg).start();
                 break;
             case HAS_WON:
+            case HAS_LOST:
                 timer.stop();
                 running = false;
                 break;

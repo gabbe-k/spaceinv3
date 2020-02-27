@@ -1,6 +1,8 @@
 package spaceinv.model;
 
 
+import spaceinv.event.EventBus;
+import spaceinv.event.ModelEvent;
 import spaceinv.model.object.Ground;
 import spaceinv.model.object.Gun;
 import spaceinv.model.object.OuterSpace;
@@ -26,23 +28,21 @@ public class SI {
     public static final int GAME_HEIGHT = 500;
     public static final int LEFT_LIMIT = 50;
     public static final int RIGHT_LIMIT = 450;
-    public static final int SHIP_WIDTH = 20;
-    public static final int SHIP_HEIGHT = 20;
-    public static final int SHIP_MAX_DX = 3;
-    public static final int SHIP_MAX_DY = 0;
-    public static final int SHIP_COLS= 5;
-    public static final int SHIP_ROWS = 5;
+    public static final int SHIP_WIDTH = 30;
+    public static final int SHIP_HEIGHT = 30;
+    public static final int SHIP_MAX_DX = 5;
+    public static final int SHIP_MAX_DY = 15;
+    public static final int SHIP_COLS= 7;
+    public static final int SHIP_ROWS = 7;
     public static final int SHIP_MARGIN = 10;
-    public static final int GUN_WIDTH = 20;
-    public static final int GUN_HEIGHT = 20;
+    public static final int GUN_WIDTH = 40;
+    public static final int GUN_HEIGHT = 40;
     public static final double GUN_MAX_DX = 2;
-    public static final double PROJECTILE_WIDTH = 5;
-    public static final double PROJECTILE_HEIGHT = 5;
+    public static final double PROJECTILE_WIDTH = 15;
+    public static final double PROJECTILE_HEIGHT = 15;
+    public static final int PROJECTILE_SPEED = 1;
     public static final int GROUND_HEIGHT = 20;
     public static final int OUTER_SPACE_HEIGHT = 10;
-    //i dont know if this is necessary
-    //////////////////////
-    public static final int PROJECTILE_SPEED = 1;
 
 
     public static final long ONE_SEC = 1_000_000_000;
@@ -51,17 +51,20 @@ public class SI {
 
     private static final Random rand = new Random();
 
-    // TODO More references here
-    private final Ground ground = new Ground();
-    private final Gun gun = new Gun(GROUND_HEIGHT);
-    private final OuterSpace outerSpace = new OuterSpace();
-    private final Fleet fleet = new Fleet(SHIP_COLS, SHIP_ROWS, SHIP_MARGIN);
+    private final Ground ground;
+    private final Gun gun;
+    private final OuterSpace outerSpace;
+    private final Fleet fleet;
     private final List<Projectile> shipBombs = new ArrayList<>();
     private Projectile gunProjectile;
-    private int points;
+    private int points = 0;
 
-    // TODO Constructor here
-
+    public SI(Ground ground, Gun gun, OuterSpace outerSpace, Fleet fleet) {
+        this.ground = ground;
+        this.gun = gun;
+        this.outerSpace = outerSpace;
+        this.fleet = fleet;
+    }
 
     // Timing. All timing handled here!
     private long lastTimeForMove;
@@ -72,47 +75,113 @@ public class SI {
 
     public void update(long now) {
 
-        /*if( ships.size() == 0){
+
+        //Win/lose condition
+        if( fleet.getShipList().isEmpty()){
             EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.HAS_WON));
-        }*/
-
-        /*
-           Movement
-         */
-
-        gun.move();
-        fleet.moveFleet();
-
-        if (gunProjectile != null) {
-            gunProjectile.move();
-
-            if (outerSpace.isOut(gunProjectile)) {
-                gunProjectile = null;
-            }
+            return;
+        }
+        if (shipOnGround()) {
+            EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.HAS_LOST));
+            return;
         }
 
-        /*
-            Ships fire
-         */
-        fleet.changeDxIfWallCollision();
-        /*
 
-             Collisions
-         */
+        //Movement
+        fleet.updateWidth();
+        gun.move();
+        fleet.moveCurrShip();
+        fleet.setFleetDy(0);
+        changeDxIfWallCollision();
+
+        //Gun fires
+        if (gunProjectile != null) {
+            Ship collidedShip = (Ship)collision(gunProjectile);
+            if (collidedShip != null) {
+
+                //Adds score
+                points += collidedShip.shipPoints;
+
+                fleet.remove(collidedShip);
+                EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.GUN_HIT_SHIP, collidedShip));
+                gunProjectile = null;
+            }
+            else {
+                gunProjectile.move();
+
+                if (outerSpace.isOut(gunProjectile)) {
+                    gunProjectile = null;
+                }
+            }
+
+        }
+
+        //Ships fire
+        if (shipBombs.size() < 1) {
+
+            Random rnd = new Random();
+
+            if (rnd.nextInt(75) == 1) {
+                shipBombs.add(fleet.fireShip());
+            }
+
+        }
+
+        //Collision for bombs
+        removeBombIfCollision();
     }
 
-    private void projHitShip() {
-        List<Ship> shipList = fleet.getShipList();
+    public void changeDxIfWallCollision() {
+
+        if ( fleet.getMaxX() >= RIGHT_LIMIT) {
+            fleet.setFleetDx(-SHIP_MAX_DX);
+            fleet.setFleetDy(SHIP_MAX_DY);
+        }
+
+        if ( fleet.getMinX() <= LEFT_LIMIT) {
+            fleet.setFleetDx(SHIP_MAX_DX);
+            fleet.setFleetDy(SHIP_MAX_DY);
+        }
     }
 
-    private boolean shipHitRightLimit() {
-        // TODO
+    public boolean shipOnGround() {
+        for (int i = fleet.getShipList().size()-1; i >= 0; i--) {
+            if (fleet.getShipList().get(i).collidesWith(ground) != null) {
+                return true;
+            }
+        }
         return false;
     }
 
-    private boolean shipHitLeftLimit() {
-        // TODO
-        return false;
+    public Positionable collision(Positionable b) {
+        for (Ship s: fleet.getShipList()) {
+            if (b.collidesWith(s) != null) {
+                return s;
+            }
+
+        }
+        return null;
+    }
+
+    public void removeBombIfCollision() {
+
+        if (!shipBombs.isEmpty()) {
+            List<Projectile> toRemove = new ArrayList<>();
+
+            for (Projectile p:shipBombs) {
+                p.move();
+                if(p.collidesWith(ground) != null) {
+                    toRemove.add(p);
+                    EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.BOMB_HIT_GROUND, p));
+                }
+                if (p.collidesWith(gun) != null) {
+                    EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.BOMB_HIT_GUN, gun));
+                }
+            }
+
+            shipBombs.removeAll(toRemove);
+        }
+
     }
 
 
@@ -144,13 +213,11 @@ public class SI {
         }
     }
 
-    // TODO More methods called by GUI
-
-
     public List<Positionable> getPositionables() {
         List<Positionable> ps = new ArrayList<>();
         ps.add(gun);
         ps.add(ground);
+        ps.addAll(shipBombs);
         if (gunProjectile != null) ps.add(gunProjectile);
         ps.addAll(fleet.getShipList());
         return ps;
