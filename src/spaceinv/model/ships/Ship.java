@@ -10,6 +10,7 @@ import static spaceinv.model.SI.*;
 public abstract class Ship extends Movable implements Shootable {
 
     public final int shipPoints;
+    boolean isShot = false;
 
     public Ship(double x, double y, int shipPoints) {
         super(x, y, SHIP_WIDTH, SHIP_HEIGHT);
@@ -25,6 +26,15 @@ public abstract class Ship extends Movable implements Shootable {
     @Override
     public Projectile fire() {
         return Shooter.fire(this, PROJECTILE_SPEED);
+    }
+
+
+    public void setShot(boolean shot) {
+        isShot = shot;
+    }
+
+    public boolean isShot() {
+        return isShot;
     }
 
 }
