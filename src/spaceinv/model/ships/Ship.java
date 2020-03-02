@@ -17,6 +17,12 @@ public abstract class Ship extends Movable implements Shootable {
     }
 
     @Override
+    public void move() {
+        super.move();
+        setDy(0);
+    }
+
+    @Override
     public Projectile fire() {
         return Shooter.fire(this, PROJECTILE_SPEED);
     }

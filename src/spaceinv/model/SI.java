@@ -28,26 +28,26 @@ public class SI {
     public static final int GAME_HEIGHT = 500;
     public static final int LEFT_LIMIT = 50;
     public static final int RIGHT_LIMIT = 450;
-    public static final int SHIP_WIDTH = 30;
-    public static final int SHIP_HEIGHT = 30;
-    public static final int SHIP_MAX_DX = 5;
+    public static final int SHIP_WIDTH = 20;
+    public static final int SHIP_HEIGHT = 20;
+    public static final int SHIP_MAX_DX = 10;
     public static final int SHIP_MAX_DY = 15;
     public static final int SHIP_COLS= 7;
     public static final int SHIP_ROWS = 7;
     public static final int SHIP_MARGIN = 10;
-    public static final int GUN_WIDTH = 40;
-    public static final int GUN_HEIGHT = 40;
+    public static final int GUN_WIDTH = 20;
+    public static final int GUN_HEIGHT = 20;
     public static final double GUN_MAX_DX = 2;
-    public static final double PROJECTILE_WIDTH = 30;
-    public static final double PROJECTILE_HEIGHT = 30;
+    public static final double PROJECTILE_WIDTH = 10;
+    public static final double PROJECTILE_HEIGHT = 10;
     public static final int PROJECTILE_SPEED = 1;
     public static final int GROUND_HEIGHT = 20;
     public static final int OUTER_SPACE_HEIGHT = 10;
 
 
-    public static final long ONE_SEC = 1_000_000_000;
+    /*public static final long ONE_SEC = 1_000_000_000;
     public static final long HALF_SEC = 500_000_000;
-    public static final long TENTH_SEC = 100_000_000;
+    public static final long TENTH_SEC = 100_000_000; */
 
     private static final Random rand = new Random();
 
@@ -67,9 +67,9 @@ public class SI {
     }
 
     // Timing. All timing handled here!
-    private long lastTimeForMove;
+   /* private long lastTimeForMove;
     private long lastTimeForFire;
-    private int shipToMove = 0;
+    private int shipToMove = 0; */
 
     // ------ Game loop (called by timer) -----------------
 
@@ -88,11 +88,10 @@ public class SI {
 
 
         //Movement
-        fleet.updateWidth();
         gun.move();
-        fleet.moveCurrShip();
-        fleet.setFleetDy(0);
+        fleet.walk();
         changeDxIfWallCollision();
+        //Invert fleet Dx if it collides with a wall
 
         //Gun fires
         if (gunProjectile != null) {
@@ -133,14 +132,14 @@ public class SI {
 
     public void changeDxIfWallCollision() {
 
-        if ( fleet.getMaxX() >= RIGHT_LIMIT) {
-            fleet.setFleetDx(-SHIP_MAX_DX);
-            fleet.setFleetDy(SHIP_MAX_DY);
+        if ( fleet.getFleetDx() > 0 && fleet.getCurrentX() >= RIGHT_LIMIT) {
+            fleet.turn();
+            // fleet.setFleetDy(SHIP_MAX_DY);
         }
 
-        if ( fleet.getMinX() <= LEFT_LIMIT) {
-            fleet.setFleetDx(SHIP_MAX_DX);
-            fleet.setFleetDy(SHIP_MAX_DY);
+        if ( fleet.getFleetDx() < 0 && fleet.getCurrentX() <= LEFT_LIMIT) {
+            fleet.turn();
+            //  fleet.setFleetDy(SHIP_MAX_DY);
         }
     }
 
