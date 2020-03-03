@@ -1,17 +1,31 @@
 package spaceinv.model.object;
 
+import spaceinv.model.Positionable;
+
 import static spaceinv.model.SI.*;
 
 /*
     Used to check if projectiles from gun have left our world
  */
-public class OuterSpace {
+public class OuterSpace implements Positionable {
 
-    private int spaceBorder = OUTER_SPACE_HEIGHT;
-
-    public boolean isOut(Projectile projectile) {
-        if (projectile.getY() < spaceBorder) return true;
-        return false;
+    @Override
+    public double getX() {
+        return 0;
     }
 
+    @Override
+    public double getY() {
+        return 0;
+    }
+
+    @Override
+    public double getWidth() {
+        return GAME_WIDTH;
+    }
+
+    @Override
+    public double getHeight() {
+        return OUTER_SPACE_HEIGHT;
+    }
 }

@@ -1,10 +1,7 @@
 package spaceinv.model.ships;
 
-import spaceinv.model.object.Projectile;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static spaceinv.model.SI.*;
 
@@ -12,7 +9,6 @@ public class Fleet {
 
     private int currShipCol;
     private int currShipRow;
-
 
     private double fleetDx = SHIP_MAX_DX;
     public boolean turn = false;
@@ -29,114 +25,75 @@ public class Fleet {
             for (int j = 0; j < shipCol; j++) {
                 double sx = x + j*(SHIP_WIDTH+margin);
                 double sy =  10 + i*(SHIP_HEIGHT+margin);
-                Ship s = new Frigate(sx,sy);
 
-                switch (i % 3) {
-                    case 1:
-                    s = new Bomber(sx,sy);
-                    break;
-                    case 2:
-                    s = new BattleCruiser(sx,sy);
-                    break;
-                }
-
+                Ship s = fleetShip(sx, sy, i % 3);
                 s.setDx(fleetDx);
                 row.add(s);
             }
-
             shipList.add(row);
         }
 
-        initWalkRight();
+        currShipRow = shipList.size()-1;
+        currShipCol = shipList.get(currShipRow).size();
+        // currShipRow = shipList.size()-1;
+        // currShipCol = -1;
 
     }
 
-    public void walk() {
-        if (fleetDx > 0) {
-            walkRight();
-        } else {
-            walkLeft();
-        }
+    private Ship fleetShip(double sx, double sy, int index){
+        if (index == 0) return new Frigate(sx, sy);
+        if (index == 1) return new Bomber(sx, sy);
+        else            return new BattleCruiser(sx, sy);
     }
 
-    public void initWalkRight() {
-        turn = false;
+    private void initWalkRight() {
         currShipRow = shipList.size()-1;
         currShipCol = shipList.get(currShipRow).size() -1;
-        setFleetDx(SHIP_MAX_DX);
-        currentShip().move();
+        turnFleet();
     }
 
-    public void initWalkLeft(){
-        turn = false;
+    private void initWalkLeft(){
         currShipRow = shipList.size()-1;
         currShipCol = 0;
-        setFleetDx(-SHIP_MAX_DX);
-        currentShip().move();
+        turnFleet();
     }
 
-    private void walkRight() {
-        int newCol;
-        if (currShipRow >= shipList.size()) {
-            currShipRow--;
-            newCol = 0;
-        } else {
-            newCol = currShipCol - 1;
+    private boolean setNextShipIndex() {
+        switch ((int) Math.signum(fleetDx)) {
+            case  1: //Going right
+                if (--currShipCol < 0) {
+                    if (--currShipRow < 0) break;
+                    currShipCol = shipList.get(currShipRow).size()-1;
+                }
+                break;
+            case -1: //Going left
+                if (++currShipCol > shipList.get(currShipRow).size() -1 ) {
+                    currShipRow--;
+                    currShipCol = 0;
+                }
+                break;
         }
-
-        if (newCol < 0) {
-            if (--currShipRow < 0) {
-                if (turn) {
-                    setFleetDy(SHIP_MAX_DY);
-                    initWalkLeft();
-                    return;
-                }
-                else {
-                    currShipRow = shipList.size() - 1;
-                }
+        if (currShipRow < 0) {
+            if((currShipRow = shipList.size() -1)<0) return false;
+            switch ((int)Math.signum(fleetDx)) {
+                case 1:
+                    if (turn) initWalkLeft();
+                    else currShipCol = shipList.get(currShipRow).size()-1;
+                    break;
+                case -1:
+                    if (turn) initWalkRight();
+                    else currShipCol = 0;
+                    break;
             }
-            currShipCol = shipList.get(currShipRow).size() - 1;
         }
-        else {
-            currShipCol = newCol;
-        }
-
-        currentShip().move();
+        return true;
     }
 
-    private void walkLeft() {
-        int newCol;
-        if (currShipRow >= shipList.size()) {
-            currShipRow--;
-            newCol = shipList.get(currShipRow).size() -1;
-        } else {
-            newCol = currShipCol + 1;
+    public Ship getShip() {
+        if (setNextShipIndex()) {
+            return shipList.get(currShipRow).get(currShipCol);
         }
-
-
-        if (newCol > shipList.get(currShipRow).size()-1) {
-            if (--currShipRow < 0) {
-                if (turn) {
-                    setFleetDy(SHIP_MAX_DY);
-                    initWalkRight();
-                    return;
-                }
-                else {
-                    currShipRow = shipList.size() - 1;
-                }
-            }
-            currShipCol = 0;
-
-        }
-        else {
-            currShipCol = newCol;
-        }
-
-        currentShip().move();
-    }
-
-    public Ship currentShip() {
-        return shipList.get(currShipRow).get(currShipCol);
+        return null;
     }
 
     public List<Ship> getShipList() {
@@ -149,49 +106,38 @@ public class Fleet {
         return returnList;
     }
 
-    public void remove(Ship s) {
-        for (List<Ship> row:shipList) {
-            if (row.remove(s)) {
-                if (row.size() == 0) {
-                    shipList.remove(row);
+    public void remove(Ship toRemove) {
+        for (int row = 0; row < shipList.size(); row++) {
+            for (int col = 0; col < shipList.get(row).size(); col++) {
+                if (toRemove == shipList.get(row).get(col)) {
+                    shipList.get(row).remove(col);
+
+                    //If you remove a ship behind the current (or the current) you need to compensate the index
+                    //So the index doesn't point one step too far after removal
+                    if (row == currShipRow && col <= currShipCol) currShipCol--;
+                    if (shipList.get(row).size() == 0) {
+                        shipList.remove(row);
+                        //Same principle in rows
+                        if (row <= currShipRow) currShipRow--;
+                    }
+                    return;
                 }
-                break;
             }
         }
     }
 
-    public Projectile fireShip() {
-        Random rnd = new Random();
-        int rowIndex = rnd.nextInt(shipList.size());
-        List<Ship> row = shipList.get(rowIndex);
-        int shipIndex = rnd.nextInt(row.size());
-        return row.get(shipIndex).fire();
-
+    //Public to set, private to unset
+    public void turn(Boolean b) {
+        if (b) turn = true;
     }
 
-    public void turn() {
-        this.turn = true;
-    }
-
-    public void setFleetDx(int fleetDx) {
-        this.fleetDx = fleetDx;
+    private void turnFleet() {
+        this.fleetDx = -fleetDx;
         for (Ship s: getShipList()) {
             s.setDx(fleetDx);
+            s.setDy(SHIP_MAX_DY);
         }
-    }
-
-    public double getFleetDx() {
-        return fleetDx;
-    }
-
-    public void setFleetDy(int fleetDy) {
-        for (Ship s: getShipList()) {
-            s.setDy(fleetDy);
-        }
-    }
-
-    public double getCurrentX() {
-        return currentShip().getX();
+        turn = false;
     }
 
 }

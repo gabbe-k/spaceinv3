@@ -32,8 +32,8 @@ public class SI {
     public static final int SHIP_HEIGHT = 20;
     public static final int SHIP_MAX_DX = 10;
     public static final int SHIP_MAX_DY = 15;
-    public static final int SHIP_COLS= 7;
-    public static final int SHIP_ROWS = 7;
+    public static final int SHIP_COLS= 12;
+    public static final int SHIP_ROWS = 12;
     public static final int SHIP_MARGIN = 10;
     public static final int GUN_WIDTH = 20;
     public static final int GUN_HEIGHT = 20;
@@ -45,9 +45,9 @@ public class SI {
     public static final int OUTER_SPACE_HEIGHT = 10;
 
 
-    /*public static final long ONE_SEC = 1_000_000_000;
+    public static final long ONE_SEC = 1_000_000_000;
     public static final long HALF_SEC = 500_000_000;
-    public static final long TENTH_SEC = 100_000_000; */
+    public static final long TENTH_SEC = 100_000_000;
 
     private static final Random rand = new Random();
 
@@ -56,7 +56,7 @@ public class SI {
     private final OuterSpace outerSpace;
     private final Fleet fleet;
     private final List<Projectile> shipBombs = new ArrayList<>();
-    private Projectile gunProjectile;
+    private Projectile gunProj;
     private int points = 0;
 
     public SI(Ground ground, Gun gun, OuterSpace outerSpace, Fleet fleet) {
@@ -67,128 +67,74 @@ public class SI {
     }
 
     // Timing. All timing handled here!
-   /* private long lastTimeForMove;
-    private long lastTimeForFire;
-    private int shipToMove = 0; */
+    private long timeOutStart;
+    private boolean hasTimeOut = false;
 
     // ------ Game loop (called by timer) -----------------
 
     public void update(long now) {
+        hasTimeOut = hasTimeOut(now);
 
+        if (!WallCollision(gun) && !hasTimeOut) gun.move();
+        //Gun fires
+        if (gunProj != null) {
+            gunProj.move();
+
+            Ship collidedShip;
+            if (gunProj.collidesWith(outerSpace)) {
+                gunProj = null;
+            } else if (null != (collidedShip = (Ship)gunProj.collidesWith((List<Positionable>) (List) fleet.getShipList()))) {
+                points += collidedShip.getShipPoints();
+                EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.GUN_HIT_SHIP, collidedShip));
+                fleet.remove(collidedShip);
+                gunProj = null;
+            }
+        }
+
+        //Ships bombs
+        List<Projectile> toRemove = new ArrayList<>();
+        for (Projectile bomb : shipBombs) {
+            bomb.move();
+            if (bomb.collidesWith(ground))  EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.BOMB_HIT_GROUND, bomb));
+            else if (bomb.collidesWith(gun)) {
+                EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.BOMB_HIT_GUN, gun));
+                timeOutStart = now;
+            } else continue;
+            toRemove.add(bomb);
+        }
+        shipBombs.removeAll(toRemove);
+
+        //Alien Movement
+        Ship currentShip;
 
         //Win/lose condition
-        if( fleet.getShipList().isEmpty()){
+        if ((currentShip = fleet.getShip()) == null) {
             EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.HAS_WON));
-            return;
-        }
-        if (shipOnGround()) {
+        } else if(currentShip.collidesWith(ground)) {
             EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.HAS_LOST));
-            return;
-        }
-
-
-        //Movement
-        gun.move();
-        fleet.walk();
-        changeDxIfWallCollision();
-        //Invert fleet Dx if it collides with a wall
-
-        //Gun fires
-        if (gunProjectile != null) {
-            Ship collidedShip = (Ship)collision(gunProjectile);
-            if (collidedShip != null) {
-
-                //Adds score
-                points += collidedShip.shipPoints;
-
-                fleet.remove(collidedShip);
-                EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.GUN_HIT_SHIP, collidedShip));
-                gunProjectile = null;
-            }
-            else {
-                gunProjectile.move();
-
-                if (outerSpace.isOut(gunProjectile)) {
-                    gunProjectile = null;
-                }
-            }
-
-        }
-
-        //Ships fire
-        if (shipBombs.size() < 1) {
-
-            Random rnd = new Random();
-
-            if (rnd.nextInt(75) == 1) {
-                shipBombs.add(fleet.fireShip());
-            }
-
-        }
-
-        //Collision for bombs
-        removeBombIfCollision();
-    }
-
-    public void changeDxIfWallCollision() {
-
-        if ( fleet.getFleetDx() > 0 && fleet.getCurrentX() >= RIGHT_LIMIT) {
-            fleet.turn();
-            // fleet.setFleetDy(SHIP_MAX_DY);
-        }
-
-        if ( fleet.getFleetDx() < 0 && fleet.getCurrentX() <= LEFT_LIMIT) {
-            fleet.turn();
-            //  fleet.setFleetDy(SHIP_MAX_DY);
+            EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.BOMB_HIT_GROUND, currentShip));
+        } else {
+            currentShip.move();
+            fleet.turn(WallCollision(currentShip)); //Invert fleet Dx if it collides with a wall
+            if (shipBombs.size() <= 1 && rand.nextInt(100) < 1) shipBombs.add(currentShip.fire());
         }
     }
 
-    public boolean shipOnGround() {
-        for (int i = fleet.getShipList().size()-1; i >= 0; i--) {
-            if (fleet.getShipList().get(i).collidesWith(ground) != null) {
-                return true;
-            }
-        }
-        return false;
+    private boolean WallCollision(Movable m) {
+
+        return ( (m.getDx() > 0 && m.getX() >= RIGHT_LIMIT)
+              || (m.getDx() < 0 && m.getX() + m.getWidth() <= LEFT_LIMIT));
     }
 
-    public Positionable collision(Positionable b) {
-        for (Ship s: fleet.getShipList()) {
-            if (b.collidesWith(s) != null) {
-                return s;
-            }
-
-        }
-        return null;
+    private boolean hasTimeOut(long now) {
+        return  (now - timeOutStart < ONE_SEC);
     }
-
-    public void removeBombIfCollision() {
-
-        if (!shipBombs.isEmpty()) {
-            List<Projectile> toRemove = new ArrayList<>();
-
-            for (Projectile p:shipBombs) {
-                p.move();
-                if(p.collidesWith(ground) != null) {
-                    toRemove.add(p);
-                    EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.BOMB_HIT_GROUND, p));
-                }
-                if (p.collidesWith(gun) != null) {
-                    EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.BOMB_HIT_GUN, gun));
-                }
-            }
-
-            shipBombs.removeAll(toRemove);
-        }
-
-    }
-
 
     // ---------- Interaction with GUI  -------------------------
 
     public void fireGun() {
-        if (gunProjectile == null) {
-            gunProjectile = gun.fire();
+        if (gunProj == null && !hasTimeOut) {
+            gunProj = gun.fire();
         }
     }
 
@@ -217,8 +163,8 @@ public class SI {
         ps.add(gun);
         ps.add(ground);
         ps.addAll(shipBombs);
-        if (gunProjectile != null) ps.add(gunProjectile);
         ps.addAll(fleet.getShipList());
+        if (gunProj != null) ps.add(gunProj);
         return ps;
     }
 

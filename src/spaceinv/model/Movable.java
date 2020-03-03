@@ -6,8 +6,8 @@ public abstract class Movable implements Positionable {
     private double y;
     private double dx;
     private double dy;
-    private double width;
-    private double height;
+    private final double width;
+    private final double height;
 
     public Movable(double x, double y,double width, double height) {
         this.x = x;
@@ -48,12 +48,5 @@ public abstract class Movable implements Positionable {
     @Override
     public double getHeight() {
         return height;
-    }
-    protected void setWidth(double width) {
-        this.width = width;
-
-    }
-    protected void setHeight(double height) {
-        this.height = height;
     }
 }

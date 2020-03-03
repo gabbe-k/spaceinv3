@@ -6,9 +6,12 @@ package spaceinv.model.ships;
 public class BattleCruiser extends Ship {
 
     // Default value
-    public static final int BATTLE_CRUISER_POINTS = 100;
-
     public BattleCruiser(double x, double y) {
-        super(x, y, BATTLE_CRUISER_POINTS);
+        super(x, y);
+    }
+
+    @Override
+    public int getShipPoints() {
+        return 100;
     }
 }
