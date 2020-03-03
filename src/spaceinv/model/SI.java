@@ -40,7 +40,7 @@ public class SI {
     public static final double GUN_MAX_DX = 2;
     public static final double PROJECTILE_WIDTH = 10;
     public static final double PROJECTILE_HEIGHT = 10;
-    public static final int PROJECTILE_SPEED = 2;
+    public static final int PROJECTILE_SPEED = 1;
     public static final int GROUND_HEIGHT = 20;
     public static final int OUTER_SPACE_HEIGHT = 10;
 
@@ -75,8 +75,9 @@ public class SI {
 
     public void update(long now) {
 
+
         //Win/lose condition
-        if(fleet.getAliveShips().isEmpty()){
+        if( fleet.getShipList().isEmpty()){
             EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.HAS_WON));
             return;
         }
@@ -84,6 +85,8 @@ public class SI {
             EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.HAS_LOST));
             return;
         }
+
+
         //Movement
         gun.move();
         fleet.walk();
@@ -93,12 +96,12 @@ public class SI {
         //Gun fires
         if (gunProjectile != null) {
             Ship collidedShip = (Ship)collision(gunProjectile);
-            if (collidedShip != null && !collidedShip.isShot()) {
+            if (collidedShip != null) {
 
                 //Adds score
                 points += collidedShip.shipPoints;
 
-                collidedShip.setShot(true);
+                fleet.remove(collidedShip);
                 EventBus.INSTANCE.publish(new ModelEvent(ModelEvent.Type.GUN_HIT_SHIP, collidedShip));
                 gunProjectile = null;
             }
@@ -142,8 +145,7 @@ public class SI {
 
     public boolean shipOnGround() {
         for (int i = fleet.getShipList().size()-1; i >= 0; i--) {
-            Ship s = fleet.getShipList().get(i);
-            if (!s.isShot() && s.collidesWith(ground) != null) {
+            if (fleet.getShipList().get(i).collidesWith(ground) != null) {
                 return true;
             }
         }
@@ -216,12 +218,7 @@ public class SI {
         ps.add(ground);
         ps.addAll(shipBombs);
         if (gunProjectile != null) ps.add(gunProjectile);
-
-        for (Ship s: fleet.getShipList()) {
-            if (s.isShot() == false) {
-                ps.add(s);
-            }
-        }
+        ps.addAll(fleet.getShipList());
         return ps;
     }
 

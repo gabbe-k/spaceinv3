@@ -13,6 +13,7 @@ public class Fleet {
     private int currShipCol;
     private int currShipRow;
 
+
     private double fleetDx = SHIP_MAX_DX;
     public boolean turn = false;
 
@@ -75,7 +76,6 @@ public class Fleet {
     }
 
     private void walkRight() {
-
         int newCol;
         if (currShipRow >= shipList.size()) {
             currShipRow--;
@@ -147,17 +147,6 @@ public class Fleet {
         }
 
         return returnList;
-    }
-
-    public List<Ship> getAliveShips() {
-        List<Ship> shipList = getShipList();
-        List<Ship> aliveList = new ArrayList<>();
-        for (Ship s:shipList) {
-            if (!s.isShot) {
-                aliveList.add(s);
-            }
-        }
-        return aliveList;
     }
 
     public void remove(Ship s) {
