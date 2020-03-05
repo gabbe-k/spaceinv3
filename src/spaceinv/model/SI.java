@@ -32,8 +32,8 @@ public class SI {
     public static final int SHIP_HEIGHT = 20;
     public static final int SHIP_MAX_DX = 10;
     public static final int SHIP_MAX_DY = 15;
-    public static final int SHIP_COLS= 12;
-    public static final int SHIP_ROWS = 12;
+    public static final int SHIP_COLS= 2;
+    public static final int SHIP_ROWS = 2;
     public static final int SHIP_MARGIN = 10;
     public static final int GUN_WIDTH = 20;
     public static final int GUN_HEIGHT = 20;
