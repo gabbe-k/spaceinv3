@@ -1,0 +1,2 @@
+*.pdf #undanta txt
+!**/assets/*.pdf #vi vill ha pdf i assets
